@@ -5,19 +5,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.moneyhub.web.domains.HrDTO;
-import com.moneyhub.web.services.HrService;
-import com.moneyhub.web.mappers.HrMapper;
+import com.moneyhub.web.domains.MoneyhubDTO;
+import com.moneyhub.web.services.MoneyhubService;
+import com.moneyhub.web.mappers.MoneyhubMapper;
 @Service
-public class HrServiceImpl implements HrService{
-	@Autowired	HrMapper mapper;
+public class MoneyhubServiceImpl implements MoneyhubService{
+	@Autowired	MoneyhubMapper mapper;
 	
-	public void join(HrDTO param) {
+	public void join(MoneyhubDTO param) {
 		System.out.println("joinService=");
 //		HrDaoImpl.getInstance().insertJoin(param);
 	}
 	
-	public HrDTO login(HrDTO param) {
+	public MoneyhubDTO login(MoneyhubDTO param) {
 		return null;
 	}
 
