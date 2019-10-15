@@ -24,15 +24,10 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	@Autowired MoneyhubServiceImpl moneyhubService;	// 싱글톤
-	
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
 	@GetMapping("/")
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome {}.", "HomeController");
 		
-		int count = moneyhubService.countClient();
-		model.addAttribute("count", count );
 		return "home";
 	}
 	

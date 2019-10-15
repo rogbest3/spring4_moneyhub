@@ -19,7 +19,6 @@ public class MoneyhubServiceImpl implements MoneyhubService{
 	}
 	
 	public void join(MoneyhubDTO param) {
-		System.out.println("joinService=");
 //		HrDaoImpl.getInstance().insertJoin(param);
 	}
 	
