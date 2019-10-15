@@ -27,7 +27,7 @@ public class MoneyhubController {
 	
 	@GetMapping("/info")		
 	public String findClientbyCid(@RequestParam("cid") String cid, @RequestParam("pwd") String pwd ) {
-		
+		//test
 		return "";
 	}
 }
