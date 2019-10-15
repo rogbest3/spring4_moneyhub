@@ -10,7 +10,13 @@ import com.moneyhub.web.services.MoneyhubService;
 import com.moneyhub.web.mappers.MoneyhubMapper;
 @Service
 public class MoneyhubServiceImpl implements MoneyhubService{
-	@Autowired	MoneyhubMapper mapper;
+	@Autowired	MoneyhubMapper moneyhubMapper;
+	
+	@Override
+	public int countClient() {
+	
+		return moneyhubMapper.selectCountClient();
+	}
 	
 	public void join(MoneyhubDTO param) {
 		System.out.println("joinService=");
@@ -24,6 +30,8 @@ public class MoneyhubServiceImpl implements MoneyhubService{
 	public List<String> viewMypage() {
 		return null;
 	}
+
+
 	
 
 }

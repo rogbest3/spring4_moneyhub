@@ -11,4 +11,6 @@ public interface MoneyhubMapper {
 	public void insertJoin(MoneyhubDTO param);
 	public MoneyhubDTO selectLogin(MoneyhubDTO param);
 	public List<String> searchMypage();
+	
+	public int selectCountClient();
 }

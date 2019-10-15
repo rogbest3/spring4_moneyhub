@@ -10,4 +10,6 @@ public interface MoneyhubService {
 	public void join(MoneyhubDTO param);
 	public MoneyhubDTO login(MoneyhubDTO param);
 	public List<String> viewMypage();
+	
+	public int countClient();
 }
