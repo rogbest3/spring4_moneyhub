@@ -27,8 +27,9 @@ public class HomeController {
 	@GetMapping("/")
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome {}.", "HomeController");
+		System.out.println();
 		
-		return "home";
+		return "index";
 	}
 	
 }
