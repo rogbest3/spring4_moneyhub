@@ -28,9 +28,7 @@ app = (()=>{
     	})	
     	
     }
-	return {
-		run:run
-	}
+	return {run}
 })();
 
 var hr = (()=>{
