@@ -31,9 +31,9 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="<%=application.getContextPath()%>/resources/css/signin.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/4.3/examples/sign-in/signin.css" rel="stylesheet">
 </head>
-<body class="t ext-center">
+<body class="text-center">
 	<form id="form_join" class="form-signin">
 	  <img class="mb-4" src="<%=application.getContextPath()%>/resources/img/bootstrap-solid.svg" alt="" width="72" height="72">
 	  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>

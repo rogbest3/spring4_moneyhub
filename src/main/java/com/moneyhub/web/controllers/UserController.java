@@ -28,4 +28,14 @@ public class UserController {
 		logger.info("map에 담긴 아이디와 비번 {} ", map.get("uid") + ", " + map.get("pwd"));
 		return map;
 	}
+	
+	@PostMapping("/login")
+	public @ResponseBody Map<?, ?> login(@RequestBody UserDTO user){
+		Map<String, String> map = new HashMap<>();
+		logger.info("AJAX가 보낸 로그인 아이디와 비번 {} ", user.getUid() + ", " + user.getPwd());
+		map.put("uid", user.getUid());
+		map.put("pwd", user.getPwd());
+		logger.info("map에 담긴 로그인 아이디와 비번 {} ", map.get("uid") + ", " + map.get("pwd"));
+		return map;
+	}
 }
