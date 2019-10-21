@@ -42,13 +42,17 @@ auth =(()=>{
 //			type : 'submit',
 			click : e=>{
 				e.preventDefault();	//	form tag 무력화시킴 form은 SOAP방식이기 때문에 AJAX 안먹힘
-				let data = { cid : $('#clientid').val(), pwd : $('#password').val()}
-				alert('전송아이디 : '+ data.cid );
+
 				$.ajax({
 					url : _+'/client/join',
 					type : 'POST',
 					dataType : 'json',
-					data : JSON.stringify(data),
+					data : JSON.stringify({ 
+						cid : $('#clientid').val(), 
+						pwd : $('#password').val(),
+						hubAccount : $('#hubAccount').val(),
+						reg : $('#reg').val()
+						}),
 					contentType : 'application/json',
 					success : d => {	// sender, d가 자바에서 map, d.cid map의 키값
 						alert('AJAX 성공 아이디 : '+ d.cid + ', 성공 비번 : ' + d.pwd);
@@ -90,7 +94,7 @@ auth =(()=>{
 					contentType : 'application/json',
 					success : d =>{
 						alert(d.hubAccount + '님 환영합니다.')
-						
+						mypage()
 					},
 					error : e=>{
 						alert('AJAX 실패')
@@ -105,7 +109,12 @@ auth =(()=>{
 			join()
 		})
 	}
-	return{onCreate : onCreate, join, login}	// app에서 auth.onCreate() 호출했기 때문에 return에 onCreate 사용
+	let mypage =()=>{
+		let x = { css:$.css(), img:$.img() }
+		$('body').html( auth_vue.mypage_form(x) ) 
+		
+	}
+	return{onCreate : onCreate, main, join, login}	// app에서 auth.onCreate() 호출했기 때문에 return에 onCreate 사용
 })();
 
 

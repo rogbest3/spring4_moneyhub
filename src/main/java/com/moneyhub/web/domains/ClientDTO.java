@@ -8,7 +8,7 @@ import lombok.Data;
 public class ClientDTO {
 	private static final long serialVersionUID = 1L;
 	
-	private String cstate, level, hubAccount, cid, pwd, reg, wdd, cname;
+	private String cstate, level, hubAccount, cid, pwd, reg, wdd;
 
 
 	

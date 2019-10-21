@@ -5,25 +5,26 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.moneyhub.web.mappers.ClientMapper">
-    <resultMap type="com.moneyhub.web.domains.ClientDTO" id="CLIENT">
+    <resultMap type="com.moneyhub.web.domains.ClientDTO" id="Clinet">
         <id column="CID" property="cid"/>
         <result column="CSTATE" property="cstate"/>
         <result column="LEVEL" property="level"/>
-        <result column="HUB_ACCOUNT" property="hubAccoint"/>
+        <result column="HUB_ACCOUNT" property="hubAccount"/>
         <result column="PWD" property="pwd"/>
         <result column="REG" property="reg"/>
         <result column="WDD" property="wdd"/>
           
     </resultMap>
 
-    <select id="getUser" resultMap="CLIENT">
-        select * from client
+    <select id="selectLogin" resultMap="Clinet" >
+        SELECT * FROM CLIENT
+		WHERE CID LIKE #{cid} AND PWD LIKE #{pwd}
     </select>
-    <insert id="insert">
-        insert into users (cstate, level, hubAccoint, cid, pwd, reg, wdd) values (
-            #{cstate}, #{level}, #{hubAccoint}, #{cid}, #{pwd}, #{reg}, #{wdd}
+    <insert id="selectJoin" >
+        insert into client (cstate, level, hub_account, cid, pwd, reg, wdd) values (
+            #{cstate}, #{level}, #{hubAccount}, #{cid}, #{pwd}, #{reg}, #{wdd}
         )
     </insert>
- 
+  
 
 </mapper>
