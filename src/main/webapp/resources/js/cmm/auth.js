@@ -12,15 +12,26 @@ auth =(()=>{
 		init()
 		$.getScript(auth_vuejs).done(()=>{
 			setContentView()
-			$('#a_go_join').click(e=>{
+			$('#login_img_btn').click(e=>{
 				e.preventDefault()
-				join()
-			})
-			
+				login()
+			})	
 		}).fail(()=>{alert(WHEN_ERR)})
 	}
 	let setContentView =()=>{
-		login()
+		main()
+	}
+	let main =()=>{
+		let x = { css:$.css(), img:$.img() }
+		$('body').html( auth_vue.main_form(x) ) 
+		$('<img>', {
+			click : e=>{
+				e.preventDefault();	
+				alert('로그인 클릭');
+			}
+		})
+		.addClass('login_img')
+    	.appendTo('#login_img_btn')	
 	}
 	let join =()=>{
     	$('head').html( auth_vue.join_head() )
@@ -31,16 +42,16 @@ auth =(()=>{
 //			type : 'submit',
 			click : e=>{
 				e.preventDefault();	//	form tag 무력화시킴 form은 SOAP방식이기 때문에 AJAX 안먹힘
-				let data = { uid : $('#userid').val(), pwd : $('#password').val()}
-				alert('전송아이디 : '+ data.uid );
+				let data = { cid : $('#clientid').val(), pwd : $('#password').val()}
+				alert('전송아이디 : '+ data.cid );
 				$.ajax({
-					url : _+'/user/join',
+					url : _+'/client/join',
 					type : 'POST',
 					dataType : 'json',
 					data : JSON.stringify(data),
 					contentType : 'application/json',
-					success : d => {	// sender, d가 자바에서 map, d.uid map의 키값
-						alert('AJAX 성공 아이디 : '+ d.uid + ', 성공 비번 : ' + d.pwd);
+					success : d => {	// sender, d가 자바에서 map, d.cid map의 키값
+						alert('AJAX 성공 아이디 : '+ d.cid + ', 성공 비번 : ' + d.pwd);
 						login()
 						
 					},	
@@ -68,27 +79,56 @@ auth =(()=>{
 			text : 'Sign in',
 			click : e=>{
 				e.preventDefault()
-				let data = { uid : $('#uid').val(), pwd : $('#pwd').val()}
 				$.ajax({
-					url : _+'/user/login',
+					url : _+'/client/login',
 					type : 'POST',
 					dataType : 'json',
-					data : JSON.stringify(data),
+					data : JSON.stringify({ 
+						cid : $('#cid').val(), 
+						pwd : $('#pwd').val()
+					}),
 					contentType : 'application/json',
 					success : d =>{
-						alert('AJAX 로그인 성공 아이디: '+d.uid + ', 비번 : ' + d.pwd)
-						
+						alert(d.hubAccount + '님 환영합니다.')
 						
 					},
 					error : e=>{
 						alert('AJAX 실패')
 					}
-						
 				})
 			}
 		})
 		.addClass('btn btn-lg btn-primary btn-block')
 		.appendTo('#btn_login')
+		$('#a_go_join').click(e=>{
+			e.preventDefault()
+			join()
+		})
 	}
 	return{onCreate : onCreate, join, login}	// app에서 auth.onCreate() 호출했기 때문에 return에 onCreate 사용
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
