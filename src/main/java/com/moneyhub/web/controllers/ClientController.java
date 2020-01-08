@@ -22,7 +22,7 @@ public class ClientController {
 	@Autowired ClientDTO client;
 	@Autowired ClientServiceImpl clientServiceimpl;
 	
-	@PostMapping("/join")	//	/Moneyhub/count
+	@PostMapping("/join")	//	/Moneyhub/countkkkk
 	public @ResponseBody Map<?,?> join(@RequestBody ClientDTO param) {	
 
 		HashMap<String, Object> map = new HashMap<>();
